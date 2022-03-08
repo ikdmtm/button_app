@@ -1,0 +1,28 @@
+
+<div class="container">
+    <h3>ボタン一覧</h3>
+    <%= link_to "新着順", "/posts" %>　<%= link_to "人気順", "/posts/liked" %>
+    <%= form_with url: "/posts/search", method: :get, local: true do |f| %>
+        <%= f.text_field :keyword, value: @keyword, placeholder: "キーワード検索" %>
+        <%= f.submit "検索" %>
+    <% end %>
+    <div class="posts">
+        <% @posts.each do |post| %>
+            <div class="post">
+                <%= link_to "/posts/#{post.id}/button", method: :post, remote: true do %>
+                    <button><%= post.title.truncate(7) %></button>
+                <% end %>
+                <%= audio_tag(url_for(post.audio), id: "play-button-#{post.id}", preload: "metadata", controlslist: "nodownload") %>
+                <br>
+                <div class="like_buttons", id="like_buttons_<%= post.id %>">
+                    <%= render partial: 'likes/like', locals: { post: post } %>
+                </div>
+                <%= link_to "詳細", post_path(post) %>
+            </div>
+        <% end %> 
+    </div>
+    
+    <div class="clear">
+        <%= paginate @posts %>
+    </div>
+</div>

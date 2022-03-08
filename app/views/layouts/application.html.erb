@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BottonApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/16d5680429.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-left">
+          <%= link_to posts_path do %>
+            <%= image_tag "header-logo", class: "header-logo mx-2"%>
+          <% end %>
+          <%= link_to "ボタン一覧", posts_path %>
+          <%= link_to "新規投稿", new_post_path %>
+        </div>
+        <div class="header-right">
+          <% if user_signed_in? %>
+            <%= link_to "マイページ", user_path(current_user) %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
+    </header>
+
+    <!-- deviseのフラッシュメッセージ -->
+    <% if flash[:notice] %>
+      <p class="alert alert-primary" role="alert"><%= notice %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p class="alert alert-danger" role="alert"><%= alert %></p>
+    <% end %>
+
+    <%= yield %>
+    <footer class="clear">
+      <div class="container">
+        <div class="footer-left">
+          
+        </div>
+        <div class="footer-right">
+          <%= link_to "プライバシーポリシー", "privacy" %>
+          <%= link_to "利用規約", "/terms" %>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

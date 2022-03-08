@@ -1,0 +1,30 @@
+<div class="container">
+    <h3>ユーザー詳細</h3>
+    <p><%= @user.username %></p>
+    <% if current_user %>
+        <% if @user == current_user %>
+            <p><%= @user.email %></p>
+        <% end %>
+    <% end %>
+    <p>投稿数：<%= @posts.count %></p>
+    <p>いいねされた数：<%= @post_liked.count %></p>
+    <h5><%= link_to "投稿したボタン", user_path(@user) %>　<%= link_to "お気に入り", "/users/#{@user.id}/like" %></h5>
+    <div class="posts">
+        <% @posts.each do |post| %>
+            <div class="post">
+                <%= link_to "/posts/#{post.id}/button", method: :post, remote: true do %>
+                    <button><%= post.title.truncate(7) %></button>
+                <% end %>
+                <%= audio_tag(url_for(post.audio), id: "play-button-#{post.id}", preload: "metadata", controlslist: "nodownload") %>
+                <br>
+                <div class="like_buttons", id="like_buttons_<%= post.id %>">
+                    <%= render partial: 'likes/like', locals: { post: post } %>
+                </div>
+                <%= link_to "詳細", post_path(post) %>
+            </div>
+        <% end %> 
+    </div>
+    <div class="clear">
+        <%= paginate @posts %>
+    </div>
+</div>

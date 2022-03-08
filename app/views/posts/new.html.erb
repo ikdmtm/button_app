@@ -1,0 +1,7 @@
+<div class="container">
+    <h3>ボタンを作成</h3>
+    <!-- エラーメッセージ -->
+    <%= render partial: 'error_form', locals: { post: @post } %>
+    <!-- 新規投稿フォーム -->
+    <%= render partial: 'new_post_form', locals: { post: @post } %>
+</div>

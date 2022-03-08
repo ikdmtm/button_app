@@ -1,0 +1,20 @@
+<!-- 新規投稿フォーム -->
+<div class="post-form">
+    <%= form_with model: post do |f| %>
+        <div class="w-50 mb-2">
+            <%= f.label :title, "タイトル" %><br />
+            <%= f.text_field :title, class: "form-control" %>
+        </div>
+
+        <div class="mb-2">
+            <%= f.label :音声ファイル %><br />
+            <%= f.file_field :audio %>
+        </div>
+
+        <p>※音声ファイルはmp3、wav、m4a形式でアップロードしてください</p>
+
+        <div class="edit-form-bottom my-3">
+            <%= f.submit '投稿', class: "btn btn-outline-primary" %>
+        </div>
+    <% end %>
+</div>

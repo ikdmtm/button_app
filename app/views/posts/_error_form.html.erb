@@ -1,0 +1,8 @@
+<!-- エラーメッセージの共通化 -->
+<% if post.errors.any? %>
+    <% post.errors.full_messages.each do |message| %> <!-- バリデーションのエラーメッセージ -->
+        <div class="alert alert-danger" role="alert">
+            <%= message %>
+        </div>
+    <% end %>
+<% end %>

@@ -1,0 +1,126 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+
+body, html {
+    padding:0;
+    margin:0;
+    height: 100%;
+}
+
+header{
+    width: 100%;
+    height: 56px;
+    border-bottom: 1px solid #807f7f;
+    box-shadow: 0 0 3px gray;
+    margin-bottom: 10px;
+}
+
+.header-left {
+    float: left;
+    line-height: 56px;
+}
+
+.header-right {
+    float: right;
+    line-height: 56px;
+}
+
+.header-logo {
+    width: 45px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+footer {
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+}
+
+.footer-left {
+    float: left;
+}
+
+.footer-right {
+    float: right;
+}
+
+.post{
+   width: 20%;
+}
+
+button {
+display: inline-block;
+font-size: 22px;
+width: 90%;
+height: 48px;
+border-radius: 4px;
+margin: 10px 0;
+color: #fff;
+background-color: #66ccff;
+border: none;
+outline: none;
+box-shadow: 0 4px #d8d8d8;
+cursor: pointer;
+}
+
+button:active {
+box-shadow: none;
+position: relative;
+top: 4px;
+}
+
+.clear {
+clear: both;
+}
+
+a {
+text-decoration: none;
+}
+
+@media (max-width: 1000px) {
+    .post{
+        width: 25%;
+     }
+}
+
+@media (max-width: 800px) {
+    .post{
+        width: 33%;
+     }
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {          
+    border: none;     /*枠線をなくす*/
+    color: #696969;   /*文字の色を変える*/
+  }
+  
+  /* 表示しているページ番号のデザイン */
+  .pagination>.active>a {     
+    background: #93c9ff;     /*背景の色を変える*/
+    border-radius: 15px;     /*角を丸くする*/
+  }
+  
+  /*ホバー時のデザイン*/
+  .pagination>li>a:hover {        
+    border-radius: 15px;    /*角を丸くする*/
+  }
+
+  .pagination>li {
+      margin: 10px 10px;
+  }
