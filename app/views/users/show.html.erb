@@ -2,11 +2,13 @@
     <h3>ユーザー詳細</h3>
     <p><%= @user.username %></p>
     <% if current_user %>
-        <% if @user == current_user %>
+        <% if @user == current_user || current_user.admin %>
             <p><%= @user.email %></p>
+            <%= link_to '編集', edit_user_registration_path(@user), class: "btn btn-outline-primary btn-sm" %>
         <% end %>
+        <p class="my-2">権限：<%= @user.admin %></p>
     <% end %>
-    <p>投稿数：<%= @posts.count %></p>
+    <p class="mt-3">投稿数：<%= @posts.count %></p>
     <p>いいねされた数：<%= @post_liked.count %></p>
     <h5><%= link_to "投稿したボタン", user_path(@user) %>　<%= link_to "お気に入り", "/users/#{@user.id}/like" %></h5>
     <div class="posts">

@@ -12,7 +12,7 @@
         <td scope="row"><%= user.email %></td>
         <td><%= link_to '詳細', user_path(user), class: "btn btn-outline-primary btn-sm" %></td>
         <% if current_user %>
-            <% if current_user == user %>
+            <% if current_user == user || current_user.admin %>
                 <td><%= link_to '編集', edit_user_registration_path(user), class: "btn btn-outline-primary btn-sm" %></td>
                 <td><%= link_to '削除', user_registration_path(user), class: "btn btn-outline-danger btn-sm", method: :delete, data: { confirm: 'アカウントを削除しますか？？' } %></td>
             <% end %>

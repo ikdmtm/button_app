@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
             redirect_to posts_path
         end
     end
+
     private
 
     def configure_permitted_parameters

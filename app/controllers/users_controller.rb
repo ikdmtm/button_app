@@ -1,4 +1,13 @@
 class UsersController < ApplicationController
+  before_action :admin_user, {only: [:index]}
+
+  def admin_user
+    if current_user.admin
+    else
+        flash[:notice] = "権限がありません"
+        redirect_to posts_path
+    end
+  end
 
   def index
     @users = User.all.order(created_at: :desc)

@@ -8,4 +8,8 @@
             <i class="far fa-heart"></i> <%= post.likes.count %>
         <% end %>
     <% end %>
+<% else %>
+<%= link_to new_user_session_path do %>
+    <i class="far fa-heart"></i> <%= post.likes.count %>
+<% end %>
 <% end %>

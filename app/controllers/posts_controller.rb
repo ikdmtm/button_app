@@ -7,8 +7,8 @@ class PostsController < ApplicationController
   def ensure_correct_user #投稿者本人かどうかのチェック
     @post = Post.find_by(id: params[:id])
     if current_user
-      if @post.user_id == current_user.id
-      else @post.user_id != current_user.id
+      if @post.user_id == current_user.id || current_user.admin
+      else
         flash[:notice] = "権限がありません"
         redirect_to post_path(@post)
       end
@@ -30,7 +30,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(created_at: :desc).page(params[:page]).per(30)
-    @post = Post.find(1)
   end
 
   def rank

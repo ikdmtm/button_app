@@ -20,7 +20,7 @@
             <%= image_tag "header-logo", class: "header-logo mx-2"%>
           <% end %>
           <%= link_to "ボタン一覧", posts_path %>
-          <%= link_to "新規投稿", new_post_path %>
+          <%= link_to "ボタンを作成", new_post_path %>
         </div>
         <div class="header-right">
           <% if user_signed_in? %>
@@ -35,12 +35,14 @@
     </header>
 
     <!-- deviseのフラッシュメッセージ -->
-    <% if flash[:notice] %>
-      <p class="alert alert-primary" role="alert"><%= notice %></p>
-    <% end %>
-    <% if flash[:alert] %>
-      <p class="alert alert-danger" role="alert"><%= alert %></p>
-    <% end %>
+    <div class="mx-3">
+      <% if flash[:notice] %>
+        <p class="alert alert-primary" role="alert"><%= notice %></p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p class="alert alert-danger" role="alert"><%= alert %></p>
+      <% end %>
+    </div>
 
     <%= yield %>
     <footer class="clear">
@@ -49,7 +51,6 @@
           
         </div>
         <div class="footer-right">
-          <%= link_to "プライバシーポリシー", "privacy" %>
           <%= link_to "利用規約", "/terms" %>
         </div>
       </div>
