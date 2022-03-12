@@ -6,7 +6,9 @@
             <p><%= @user.email %></p>
             <%= link_to '編集', edit_user_registration_path(@user), class: "btn btn-outline-primary btn-sm" %>
         <% end %>
-        <p class="my-2">権限：<%= @user.admin %></p>
+        <% if current_user.admin %>
+            <p class="my-2">権限：<%= @user.admin %></p>
+        <% end %>
     <% end %>
     <p class="mt-3">投稿数：<%= @posts.count %></p>
     <p>いいねされた数：<%= @post_liked.count %></p>
