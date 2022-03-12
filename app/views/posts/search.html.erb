@@ -8,7 +8,7 @@
         <% @posts.each do |post| %>
             <div class="post">
                 <%= link_to "/posts/#{post.id}/button", method: :post, remote: true do %>
-                    <button><%= post.title.truncate(7) %></button>
+                    <button ontouchstart=""><%= post.title.truncate(7) %></button>
                 <% end %>
                 <%= audio_tag(url_for(post.audio), id: "play-button-#{post.id}", preload: "metadata", controlslist: "nodownload") %>
                 <br>
