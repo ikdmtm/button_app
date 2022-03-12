@@ -19,8 +19,6 @@
           <%= link_to posts_path do %>
             <%= image_tag "header-logo", class: "header-logo mx-2"%>
           <% end %>
-          <%= link_to "ボタン一覧", posts_path %>
-          <%= link_to "ボタンを作成", new_post_path %>
         </div>
         <div class="header-right">
           <% if user_signed_in? %>
@@ -43,6 +41,7 @@
         <p class="alert alert-danger" role="alert"><%= alert %></p>
       <% end %>
     </div>
+    <%= render partial: 'home/header_link' %>
 
     <%= yield %>
     <footer class="clear">

@@ -1,4 +1,3 @@
-const bgm = document.querySelector("#play-button-<%= @post.id %>")
-bgm.pause()
-bgm.currentTime = 0;
-bgm.play()
+document.querySelector("#play-button-<%= @post.id %>").pause()
+document.querySelector("#play-button-<%= @post.id %>").currentTime = 0;
+document.querySelector("#play-button-<%= @post.id %>").play()
