@@ -17,5 +17,17 @@ Turbolinks.start()
 ActiveStorage.start()
 
 require("jquery")
-//require('test.js')
 
+document.addEventListener('turbolinks:load', () => {
+  $(function() {
+      console.log("OK");
+      $('button').on('click', function(){
+          console.log('on');
+          var postid = $(this).data('id')
+          console.log(postid)
+          document.querySelector("#play-button-" + postid).pause()
+          document.querySelector("#play-button-" + postid).currentTime = 0;
+          document.querySelector("#play-button-" + postid).play()
+        });
+  });
+})

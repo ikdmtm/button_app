@@ -23,11 +23,6 @@ class PostsController < ApplicationController
     @keyword = params[:keyword]
   end
 
-  def button
-    @post = Post.find_by(id: params[:id])
-  end
-
-
   def index
     @posts = Post.all.order(created_at: :desc).page(params[:page]).per(30)
   end

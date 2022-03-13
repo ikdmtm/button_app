@@ -12,9 +12,7 @@
     <div class="posts">
         <% @likes.each do |like| %>
             <div class="post">
-                <%= link_to "/posts/#{like.post.id}/button", method: :post, remote: true do %>
-                    <button ontouchstart=""><%= like.post.title.truncate(7) %></button>
-                <% end %>
+                <button ontouchstart="" data-id=<%= like.post.id %>><%= like.post.title.truncate(7) %></button>
                 <%= audio_tag(url_for(like.post.audio), id: "play-button-#{like.post.id}", preload: "metadata", controlslist: "nodownload") %>
                 <br>
                 <div class="like_buttons", id="like_buttons_<%= like.post.id %>">

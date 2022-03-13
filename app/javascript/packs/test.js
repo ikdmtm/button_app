@@ -1,6 +1,3 @@
-$(function(){
-    $("#test").css("color","red")
-    $("button").onclick(function(){
-        
-      });
-  });
+$(function() {
+    console.log("test.js");
+});
