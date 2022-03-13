@@ -61,6 +61,7 @@ gem 'mini_magick'
 gem 'bootstrap', '~> 5.1.3'
 gem 'jquery-rails'
 gem 'kaminari'
+gem "aws-sdk-s3", require: false
 
 group :production do
   gem 'pg'
