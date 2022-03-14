@@ -21,7 +21,12 @@ require("jquery")
 document.addEventListener('turbolinks:load', () => {
   $(function() {
       console.log("OK");
-      $('button').on('click', function(){
+      //デバイス判定（タッチが有効か否か）
+      var isTouchDevice = (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
+      //デバイス判定によるイベントの決定
+      var eventType = (isTouchDevice) ? 'touchend' : 'click';
+
+      $('button').on(eventType, function(){
           console.log('on');
           var postid = $(this).data('id')
           console.log(postid)
