@@ -30,8 +30,9 @@ document.addEventListener('turbolinks:load', () => {
           console.log('on');
           var postid = $(this).data('id')
           console.log(postid)
-          document.querySelector("#play-button-" + postid).currentTime = 0;
-          document.querySelector("#play-button-" + postid).play()
+          var element = document.querySelector("#play-button-" + postid);
+          element.currentTime = 0;
+          element.play()
         });
   });
 })
