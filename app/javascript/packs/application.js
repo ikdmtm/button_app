@@ -24,7 +24,7 @@ document.addEventListener('turbolinks:load', () => {
       //デバイス判定（タッチが有効か否か）
       var isTouchDevice = (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
       //デバイス判定によるイベントの決定
-      var eventType = (isTouchDevice) ? 'touched' : 'click';
+      var eventType = (isTouchDevice) ? 'touchstart' : 'click';
 
       $('button').on(eventType, function(){
           console.log('on');
@@ -36,7 +36,3 @@ document.addEventListener('turbolinks:load', () => {
         });
   });
 })
-
-//$("#countUp").on('touched',function(){
-//  $("#disp").text(++c);
-//});
