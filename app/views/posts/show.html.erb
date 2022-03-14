@@ -16,7 +16,8 @@
                 <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "投稿を削除しますか？"} %>
             <% end %>
             <% if current_user.admin %>
-                <p>ユーザ：<%= @post.user.username %></p>
+                <p>ユーザ：<%= link_to @post.user.username, user_path(@post.user) %></p>
+                <p>公開設定：<%= @post.status %>
             <% end %>
         <% end %>
     </div>
@@ -24,13 +25,15 @@
     <div class="posts">
         <% @post_like_ranks.each do |post| %>
             <div class="post">
-                <button ontouchstart="" data-id=<%= post.id %>><%= post.title.truncate(7) %></button>
-                <%= audio_tag(url_for(post.audio), id: "play-button-#{post.id}", preload: "metadata", controlslist: "nodownload") %>
-                <br>
-                <div class="like_buttons", id="like_buttons_<%= post.id %>">
-                    <%= render partial: 'likes/like', locals: { post: post } %>
-                </div>
-                <%= link_to "詳細", post_path(post) %>
+                <% if post.status == 0 %>
+                    <button ontouchstart="" data-id=<%= post.id %>><%= post.title.truncate(7) %></button>
+                    <%= audio_tag(url_for(post.audio), id: "play-button-#{post.id}", preload: "metadata", controlslist: "nodownload") %>
+                    <br>
+                    <div class="like_buttons", id="like_buttons_<%= post.id %>">
+                        <%= render partial: 'likes/like', locals: { post: post } %>
+                    </div>
+                    <%= link_to "詳細", post_path(post) %>
+                <% end %>
             </div>
         <% end %> 
     </div>

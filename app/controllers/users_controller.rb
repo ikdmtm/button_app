@@ -1,11 +1,26 @@
 class UsersController < ApplicationController
   before_action :admin_user, {only: [:index]}
+  before_action :ensure_correct_user, {only: [:like]}
 
   def admin_user
     if current_user.admin
     else
         flash[:notice] = "権限がありません"
         redirect_to posts_path
+    end
+  end
+
+  def ensure_correct_user #投稿者本人かどうかのチェック
+    @user = User.find_by(id: params[:id])
+    if current_user
+      if @user.id == current_user.id || current_user.admin
+      else
+        flash[:notice] = "権限がありません"
+        redirect_to posts_path
+      end
+    else
+      flash[:notice] = "権限がありません"
+      redirect_to posts_path
     end
   end
 

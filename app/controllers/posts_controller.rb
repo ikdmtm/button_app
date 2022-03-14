@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   before_action :authenticate_user, {only: [:new, :create]} #ログインしていないと新規投稿できない
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]} #本人しか編集、削除ができない
-
+  before_action :publishing_settings, {only: [:show]} #非公開の投稿は本人しかアクセスできない
 
   def ensure_correct_user #投稿者本人かどうかのチェック
     @post = Post.find_by(id: params[:id])
@@ -18,18 +18,32 @@ class PostsController < ApplicationController
     end
   end
 
+  def publishing_settings
+    @post = Post.find_by(id: params[:id])
+    if @post.status == 0 #公開
+    elsif @post.status == 1 #限定公開
+    elsif @post.status == 2 #非公開
+      if current_user
+        if @post.user_id == current_user.id || current_usr.admin
+        else
+          flash[:notice] = "ボタンが非公開です"
+          redirect_to posts_path
+        end
+      end
+    end
+  end
+
   def search
     @posts = Post.search(params[:keyword]).limit(20)
     @keyword = params[:keyword]
   end
 
   def index
-    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(30)
+    @posts = Post.where(status: 0).order(created_at: :desc).page(params[:page]).per(30)
   end
 
   def rank
     @post_like_ranks = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(30).pluck(:post_id))
-    @posts = Post.all.order(created_at: :desc)
   end
 
   def show
@@ -70,6 +84,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :audio).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :audio, :status).merge(user_id: current_user.id)
   end
 end

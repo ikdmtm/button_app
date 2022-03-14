@@ -13,6 +13,17 @@
 
         <p>※音声ファイルはmp3、wav、m4a形式でアップロードしてください</p>
 
+        <div class="mb-2">
+            公開設定<br>
+            <%= f.radio_button :status, 0, checked: true %>
+            <%= f.label :status, "公開" %>
+            <%= f.radio_button :status, 1 %>
+            <%= f.label :status, "限定公開" %>
+            <%= f.radio_button :status, 2 %>
+            <%= f.label :status, "非公開" %>
+            <p>※限定公開はURLを知っていれば見ることができます、非公開は投稿した本人以外見ることができません</p>
+        </div>
+
         <div class="edit-form-bottom my-3">
             <%= f.submit '投稿', class: "btn btn-outline-primary" %>
         </div>

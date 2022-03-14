@@ -9,15 +9,16 @@
     <div class="posts">
         <% @post_like_ranks.each do |post| %>
             <div class="post">
-                <button ontouchstart="" data-id=<%= post.id %>><%= post.title.truncate(7) %></button>
-                <%= audio_tag(url_for(post.audio), id: "play-button-#{post.id}", preload: "metadata", controlslist: "nodownload") %>
-                <br>
-                <div class="like_buttons", id="like_buttons_<%= post.id %>">
-                    <%= render partial: 'likes/like', locals: { post: post } %>
-                </div>
-                <%= link_to "詳細", post_path(post) %>
+                <% if post.status == 0 %>
+                    <button ontouchstart="" data-id=<%= post.id %>><%= post.title.truncate(7) %></button>
+                    <%= audio_tag(url_for(post.audio), id: "play-button-#{post.id}", preload: "metadata", controlslist: "nodownload") %>
+                    <br>
+                    <div class="like_buttons", id="like_buttons_<%= post.id %>">
+                        <%= render partial: 'likes/like', locals: { post: post } %>
+                    </div>
+                    <%= link_to "詳細", post_path(post) %>
+                <% end %>
             </div>
         <% end %> 
     </div>
-    
 </div>
