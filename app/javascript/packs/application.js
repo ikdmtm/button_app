@@ -26,7 +26,7 @@ document.addEventListener('turbolinks:load', () => {
       //デバイス判定によるイベントの決定
       var eventType = (isTouchDevice) ? 'touchstart' : 'click';
 
-      $('button').on(eventType, function(){
+      $('button').on('click', function(){
           console.log('on');
           var postid = $(this).data('id')
           console.log(postid)
