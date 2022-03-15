@@ -1,6 +1,12 @@
 <div class= "container" %>
     <h3>ボタン詳細</h3>
     <div class="post my-3">
+        <% if @post.status == 0 %>
+        <% elsif @post.status == 1 %>
+            設定：限定公開
+        <% elsif @post.status == 2 %>
+            設定：非公開
+        <% end %>
         <p><%= @post.title %> <%= File.extname(url_for(@post.audio)).downcase %></p>
         <button ontouchstart="" data-id=<%= @post.id %>><%= @post.title.truncate(13) %></button>
         <%= audio_tag(url_for(@post.audio), id: "play-button-#{@post.id}", preload: "metadata", controlslist: "nodownload") %>
