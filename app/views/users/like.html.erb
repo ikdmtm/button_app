@@ -7,13 +7,13 @@
         <% end %>
     <% end %>
     <p>投稿数：<%= @posts.count %></p>
-    <p>いいねされた数：<%= @post_liked.count %></p>
+    <p>いいねされた数：<%= @likes_count %></p>
     <h5><%= link_to "投稿したボタン", user_path(@user) %>　<%= link_to "お気に入り", "/users/#{@user.id}/like" %></h5>
     <div class="posts">
         <% @likes.each do |like| %>
             <div class="post">
                 <% if like.post.status == 0 %>
-                    <button ontouchstart="" data-id=<%= like.post.id %>><%= like.post.title.truncate(7) %></button>
+                    <button ontouchstart="" data-id=<%= like.post.id %>><%= like.post.title.truncate(13) %></button>
                     <%= audio_tag(url_for(like.post.audio), id: "play-button-#{like.post.id}", preload: "metadata", controlslist: "nodownload") %>
                     <br>
                     <div class="like_buttons", id="like_buttons_<%= like.post.id %>">
@@ -23,7 +23,7 @@
                 <% elsif like.post.status == 1 %>
                     <% if current_user %>
                         <% if like.post.user_id == current_user.id || current_user.admin %>
-                            <button ontouchstart="" data-id=<%= like.post.id %>><%= like.post.title.truncate(7) %></button>
+                            <button ontouchstart="" data-id=<%= like.post.id %>><%= like.post.title.truncate(13) %></button>
                             <%= audio_tag(url_for(like.post.audio), id: "play-button-#{like.post.id}", preload: "metadata", controlslist: "nodownload") %>
                             <br>
                             <div class="like_buttons", id="like_buttons_<%= like.post.id %>">
@@ -35,7 +35,7 @@
                 <% elsif like.post.status == 2 %>
                     <% if current_user %>
                         <% if like.post.user_id == current_user.id || current_user.admin %>
-                            <button ontouchstart="" data-id=<%= like.post.id %>><%= like.post.title.truncate(7) %></button>
+                            <button ontouchstart="" data-id=<%= like.post.id %>><%= like.post.title.truncate(13) %></button>
                             <%= audio_tag(url_for(like.post.audio), id: "play-button-#{like.post.id}", preload: "metadata", controlslist: "nodownload") %>
                             <br>
                             <div class="like_buttons", id="like_buttons_<%= like.post.id %>">

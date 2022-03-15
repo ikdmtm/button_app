@@ -2,7 +2,7 @@
     <h3>ボタン詳細</h3>
     <div class="post my-3">
         <p><%= @post.title %> <%= File.extname(url_for(@post.audio)).downcase %></p>
-        <button ontouchstart="" data-id=<%= @post.id %>><%= @post.title.truncate(7) %></button>
+        <button ontouchstart="" data-id=<%= @post.id %>><%= @post.title.truncate(13) %></button>
         <%= audio_tag(url_for(@post.audio), id: "play-button-#{@post.id}", preload: "metadata", controlslist: "nodownload") %>
         <br>
         <div class="like_buttons", id="like_buttons_<%= @post.id %>">
@@ -26,7 +26,7 @@
         <% @post_like_ranks.each do |post| %>
             <div class="post">
                 <% if post.status == 0 %>
-                    <button ontouchstart="" data-id=<%= post.id %>><%= post.title.truncate(7) %></button>
+                    <button ontouchstart="" data-id=<%= post.id %>><%= post.title.truncate(13) %></button>
                     <%= audio_tag(url_for(post.audio), id: "play-button-#{post.id}", preload: "metadata", controlslist: "nodownload") %>
                     <br>
                     <div class="like_buttons", id="like_buttons_<%= post.id %>">

@@ -39,11 +39,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.where(status: 0).order(created_at: :desc).page(params[:page]).per(30)
+    @posts = Post.where(status: 0).order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def rank
-    @post_like_ranks = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(30).pluck(:post_id))
+    @post_like_ranks = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(20).pluck(:post_id))
   end
 
   def show
