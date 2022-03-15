@@ -1,6 +1,6 @@
 <div class= "container" %>
     <h3>ボタン詳細</h3>
-    <div class="post my-3">
+    <div class="post-show my-2">
         <% if @post.status == 0 %>
         <% elsif @post.status == 1 %>
             設定：限定公開
@@ -8,9 +8,10 @@
             設定：非公開
         <% end %>
         <p><%= @post.title %> <%= File.extname(url_for(@post.audio)).downcase %></p>
-        <button ontouchstart="" data-id=<%= @post.id %>><%= @post.title.truncate(13) %></button>
-        <%= audio_tag(url_for(@post.audio), id: "play-button-#{@post.id}", preload: "metadata", controlslist: "nodownload") %>
-        <br>
+        <div class="post-show-post mx-auto">
+            <button ontouchstart="" data-id=<%= @post.id %>><%= @post.title.truncate(13) %></button>
+            <%= audio_tag(url_for(@post.audio), id: "play-button-#{@post.id}", preload: "metadata", controlslist: "nodownload") %>
+        </div>
         <div class="like_buttons", id="like_buttons_<%= @post.id %>">
             <%= render partial: 'likes/like', locals: { post: @post } %>
         </div>
@@ -28,19 +29,17 @@
         <% end %>
     </div>
     <h5 class="clear">人気のボタン</h5>
-    <div class="posts">
-        <% @post_like_ranks.each do |post| %>
-            <div class="post">
-                <% if post.status == 0 %>
-                    <button ontouchstart="" data-id=<%= post.id %>><%= post.title.truncate(13) %></button>
-                    <%= audio_tag(url_for(post.audio), id: "play-button-#{post.id}", preload: "metadata", controlslist: "nodownload") %>
-                    <br>
-                    <div class="like_buttons", id="like_buttons_<%= post.id %>">
-                        <%= render partial: 'likes/like', locals: { post: post } %>
-                    </div>
-                    <%= link_to "詳細", post_path(post) %>
-                <% end %>
-            </div>
-        <% end %> 
-    </div>
+    <% @post_like_ranks.each do |post| %>
+        <div class="post">
+            <% if post.status == 0 %>
+                <button ontouchstart="" data-id=<%= post.id %>><%= post.title.truncate(13) %></button>
+                <%= audio_tag(url_for(post.audio), id: "play-button-#{post.id}", preload: "metadata", controlslist: "nodownload") %>
+                <br>
+                <div class="like_buttons", id="like_buttons_<%= post.id %>">
+                    <%= render partial: 'likes/like', locals: { post: post } %>
+                </div>
+                <%= link_to "詳細", post_path(post) %>
+            <% end %>
+        </div>
+    <% end %> 
 </div>

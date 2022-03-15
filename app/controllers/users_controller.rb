@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @posts = Post.where(user_id: @user.id).order(created_at: :desc)
     @post_liked = Like.where(user_id: @user.id)
-    @likes = Like.where(user_id: @user.id).page(params[:page]).per(20)
+    @likes = Like.where(user_id: @user.id).order(created_at: :desc).page(params[:page]).per(20)
     @user_posts = @user.posts #ユーザーの投稿を取得
     @likes_count = 0
     @user_posts.each do |post|

@@ -60,7 +60,19 @@ footer {
 }
 
 .post{
-   width: 20%;
+    float: left;
+    text-align: center;
+    width: 20%;
+}
+
+//posts/showのCSS
+.post-show {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.post-show-post {
+    width: 33%;
 }
 
 button {
