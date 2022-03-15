@@ -45,6 +45,12 @@ header{
     border-radius: 5px;
 }
 
+.header-title {
+    color: black;
+    font-size: 22px;
+    font-family: "Nico Moji";
+}
+
 footer {
     width: 100%;
     height: 56px;
@@ -145,3 +151,5 @@ text-decoration: none;
   .pagination>li {
       margin: 10px 10px;
   }
+
+ 
