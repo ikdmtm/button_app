@@ -23,13 +23,14 @@ document.addEventListener('turbolinks:load', () => {
       //デバイス判定（タッチが有効か否か）
       var isTouchDevice = (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
       //デバイス判定によるイベントの決定
-      var eventType = (isTouchDevice) ? 'touchstart' : 'click';
+      var eventType = (isTouchDevice) ? 'touchend' : 'click';
 
       $('button').on(eventType, function(){
           console.log('on');
           var postid = $(this).data('id')
           console.log(postid)
           var element = document.querySelector("#play-button-" + postid);
+          element.pause()
           element.currentTime = 0;
           element.play()
         });
