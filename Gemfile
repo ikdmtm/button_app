@@ -62,7 +62,6 @@ gem 'bootstrap', '~> 5.1.3'
 gem 'jquery-rails'
 gem 'kaminari'
 gem "aws-sdk-s3", require: false
-gem 'social-share-button'
 
 group :production do
   gem 'pg'
