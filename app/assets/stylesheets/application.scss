@@ -134,6 +134,24 @@ text-decoration: none;
     }
 }
 
+
+
+.ad-pc {
+    display: block !important;
+    margin: 0 auto;
+    text-align: center;
+}
+.ad-sm {
+    display: none !important;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 750px) {
+    .ad-pc { display: none !important; }
+    .ad-sm { display: block !important; }
+}
+
+
 /*ページネーション自体のデザイン*/
 .pagination>li>a {          
     border: none;     /*枠線をなくす*/

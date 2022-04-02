@@ -51,15 +51,19 @@
         <p class="alert alert-danger" role="alert"><%= alert %></p>
       <% end %>
     </div>
+    <%= render partial: 'home/ad' %>
     <%= render partial: 'home/header_link' %>
 
     <%= yield %>
+    <%= render partial: 'home/ad2' %>
     <footer class="clear">
       <div class="container">
         <div class="footer-left">
-          
         </div>
         <div class="footer-right">
+          <%= link_to "https://twitter.com/button_list", rel: "noopener noreferrer", target: "_blank" do %>
+            <i class="fa-brands fa-twitter-square fa-2x mx-2", style='color: #3399FF;'></i>@button_list
+          <% end %>
           <%= link_to "利用規約", "/terms" %>
         </div>
       </div>
