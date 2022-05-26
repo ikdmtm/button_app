@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ボタンリスト</title>
+    <title>
+      <%= content_for?(:html_title) ? yield(:html_title) : "" %> ｜ボタンリスト
+    </title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -51,11 +53,10 @@
         <p class="alert alert-danger" role="alert"><%= alert %></p>
       <% end %>
     </div>
-    <%= render partial: 'home/ad' %>
     <%= render partial: 'home/header_link' %>
 
     <%= yield %>
-    <%= render partial: 'home/ad2' %>
+
     <footer class="clear">
       <div class="container">
         <div class="footer-left">

@@ -1,3 +1,4 @@
+<% content_for(:html_title) { '検索結果' } %>
 <div class="container">
     <h3>検索結果</h3>
     <%= form_with url: "/posts/search", method: :get, local: true do |f| %>

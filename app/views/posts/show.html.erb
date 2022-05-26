@@ -1,3 +1,4 @@
+<% content_for(:html_title) { '#{@post.title}' } %>
 <div class= "container" %>
     <h3>ボタン詳細</h3>
     <div class="post-show my-2">
@@ -18,7 +19,7 @@
         <br>
         <%= @post.created_at.strftime("%Y-%m-%d %H:%M") %>
         <div class="shere_button my-1">
-            <%= link_to "https://twitter.com/share?url=#{request.url}&text=【#{ @post.title}】ボタンを押してみよう！&hashtags=ボタンリスト", rel: "noopener noreferrer", target: '_blank' do %>
+            <%= link_to "https://twitter.com/share?url=#{request.url}&text=「#{ @post.title}」ボタンを押してみよう！&hashtags=ボタンリスト", rel: "noopener noreferrer", target: '_blank' do %>
                 <i class="fa-brands fa-twitter-square fa-3x", style='color: #3399FF;'></i>
             <% end %>
             <%= link_to "https://www.facebook.com/share.php?u=#{request.url}", rel: "noopener noreferrer", target: "_blank" do %>
